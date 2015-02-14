@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-feb-2015 19:02:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classes.Measure" table="measure">
+        <id name="mId" type="int" access="field">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="mType" type="java.lang.String" access="field">
+            <column name="type" length="45" />
+        </property>
+        <property name="mValue" type="java.lang.Float" access="field">
+            <column name="value" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

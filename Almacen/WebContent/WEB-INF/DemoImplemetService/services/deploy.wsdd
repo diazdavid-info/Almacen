@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DemoImplemetService WSDL service -->
+
+  <service name="DemoImplemet" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services"/>
+      <parameter name="wsdlServiceElement" value="DemoImplemetService"/>
+      <parameter name="schemaQualified" value="http://classes,http://services"/>
+      <parameter name="wsdlServicePort" value="DemoImplemet"/>
+      <parameter name="className" value="services.DemoImplemet"/>
+      <parameter name="wsdlPortType" value="DemoImplemet"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services" xmlns:retNS="http://services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getSaluda" qname="operNS:getSaluda" returnQName="retNS:getSaludaReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombre" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services" name="addPerson" qname="operNS:addPerson" soapAction="">
+        <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:namePerson" type="tns:string"/>
+        <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:type" type="tns:string"/>
+        <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:locality" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services" name="addVehicle" qname="operNS:addVehicle" soapAction="">
+        <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:numberPlate" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services" xmlns:retNS="http://services" xmlns:rtns="http://classes" name="getPerson" qname="operNS:getPerson" returnQName="retNS:getPersonReturn" returnType="rtns:Person" soapAction="">
+        <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="getPerson getSaluda addVehicle addPerson"/>
+
+      <typeMapping xmlns:ns="http://classes" qname="ns:Address" type="java:classes.Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:TypePerson" type="java:classes.TypePerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:Person" type="java:classes.Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

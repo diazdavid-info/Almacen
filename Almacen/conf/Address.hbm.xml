@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-feb-2015 19:02:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classes.Address" table="address">
+        <id name="mId" type="int" access="field">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="mBlock" type="java.lang.String" access="field">
+            <column name="block" length="45" />
+        </property>
+        <property name="mDoor" type="java.lang.String" access="field">
+            <column name="door" length="45" />
+        </property>
+        <property name="mFloor" type="int" access="field">
+            <column name="floor" />
+        </property>
+        <property name="mLocality" type="java.lang.String" access="field">
+            <column name="locality" length="250" />
+        </property>
+        <property name="mNameVia" type="java.lang.String" access="field">
+            <column name="name_via" length="250" />
+        </property>
+        <property name="mNumber" type="int" access="field">
+            <column name="number" />
+        </property>
+        <property name="mProvince" type="java.lang.String" access="field">
+            <column name="province" length="250" />
+        </property>
+        <property name="mStairs" type="java.lang.String" access="field">
+            <column name="stairs" length="45" />
+        </property>
+        <property name="mTypeVia" type="java.lang.String" access="field">
+            <column name="type_via" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

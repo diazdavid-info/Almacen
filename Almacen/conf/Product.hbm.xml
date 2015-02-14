@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-feb-2015 19:02:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classes.Product" table="product">
+        <id name="mId" type="int" access="field">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="mCodeAsin" type="java.lang.String" access="field">
+            <column name="asin" length="50" />
+        </property>
+        <property name="mCodeEan" type="java.lang.String" access="field">
+            <column name="ean" length="50" />
+        </property>
+        <property name="mDescription" type="java.lang.String" access="field">
+            <column name="description" length="250" />
+        </property>
+        <many-to-one name="mManufacturer" class="classes.Manufacturer" access="field" fetch="join">
+            <column name="manufacturer_id" />
+        </many-to-one>
+        <list name="mMeasure" inverse="false" table="measure" lazy="true" access="field">
+            <key>
+                <column name="product_id" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="classes.Measure" />
+        </list>
+        <property name="mModel" type="java.lang.String" access="field">
+            <column name="model" length="250" />
+        </property>
+        <property name="mPrice" type="java.lang.Float" access="field">
+            <column name="price" />
+        </property>
+        <property name="mWeight" type="java.lang.Float" access="field">
+            <column name="weight" />
+        </property>
+    </class>
+</hibernate-mapping>
