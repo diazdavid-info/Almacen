@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,9 +29,9 @@ public class Unload {
 	 */
 	private int mId;
 	/**
-	 * ArrayList con los pedidos de la descarga
+	 * ArrayList con los productos de la descarga
 	 */
-	private ArrayList<Order> mOrders;
+	private List<Product> mProducts;
 	/**
 	 * Hora de la descarga
 	 */
@@ -48,7 +49,7 @@ public class Unload {
 		this.mCompany = null;
 		this.mDate = null;
 		this.mDriver = null;
-		this.mOrders = null;
+		this.mProducts = null;
 		this.mTime = null;
 		this.mVehicle = null;
 	}
@@ -86,11 +87,11 @@ public class Unload {
 	}
 
 	/**
-	 * Devuelve un ArrayList con los pedidos de la descarga
+	 * Devuelve un ArrayList con los productos de la descarga
 	 * @return ArrayList
 	 */
-	public ArrayList<Order> getOrders(){
-		return mOrders;
+	public List<Product> getProducts(){
+		return mProducts;
 	}
 
 	/**
@@ -145,8 +146,8 @@ public class Unload {
 	 * Configura el ArrayList con los pedidos de la descarga
 	 * @param orders ArrayList
 	 */
-	public void setOrders(ArrayList<Order> orders){
-		mOrders = orders;
+	public void setProduts(ArrayList<Product> products){
+		mProducts = products;
 	}
 
 	/**

@@ -10,6 +10,8 @@
       <parameter name="className" value="services.DemoImplemet"/>
       <parameter name="wsdlPortType" value="DemoImplemet"/>
       <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services" name="descarga" qname="operNS:descarga" soapAction="">
+      </operation>
       <operation xmlns:operNS="http://services" xmlns:retNS="http://services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getSaluda" qname="operNS:getSaluda" returnQName="retNS:getSaludaReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombre" type="tns:string"/>
       </operation>
@@ -24,7 +26,9 @@
       <operation xmlns:operNS="http://services" xmlns:retNS="http://services" xmlns:rtns="http://classes" name="getPerson" qname="operNS:getPerson" returnQName="retNS:getPersonReturn" returnType="rtns:Person" soapAction="">
         <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
       </operation>
-      <parameter name="allowedMethods" value="getPerson getSaluda addVehicle addPerson"/>
+      <operation xmlns:operNS="http://services" name="addProduct" qname="operNS:addProduct" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getPerson getSaluda descarga addProduct addVehicle addPerson"/>
 
       <typeMapping xmlns:ns="http://classes" qname="ns:Address" type="java:classes.Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
       <typeMapping xmlns:ns="http://classes" qname="ns:TypePerson" type="java:classes.TypePerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>

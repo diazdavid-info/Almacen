@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -29,21 +29,23 @@
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
  <ns1:service name="DemoImplemet" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="getSaluda" qname="ns1:getSaluda" returnQName="ns1:getSaludaReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:nombre" type="xsd:string"/>
-  </ns2:operation>
-  <ns1:operation name="addPerson" qname="ns2:addPerson" soapAction="" xmlns:ns2="http://services">
-   <ns1:parameter qname="ns2:namePerson" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns2:type" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns2:locality" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns2:operation name="descarga" qname="ns1:descarga" soapAction="" xmlns:ns1="http://services" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:operation name="getSaluda" qname="ns2:getSaluda" returnQName="ns2:getSaludaReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:nombre" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="addVehicle" qname="ns3:addVehicle" soapAction="" xmlns:ns3="http://services">
-   <ns1:parameter qname="ns3:numberPlate" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="addPerson" qname="ns3:addPerson" soapAction="" xmlns:ns3="http://services">
+   <ns1:parameter qname="ns3:namePerson" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:type" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:locality" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="getPerson" qname="ns4:getPerson" returnQName="ns4:getPersonReturn" returnType="ns5:Person" soapAction="" xmlns:ns4="http://services" xmlns:ns5="http://classes">
-   <ns1:parameter qname="ns4:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="addVehicle" qname="ns4:addVehicle" soapAction="" xmlns:ns4="http://services">
+   <ns1:parameter qname="ns4:numberPlate" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getPerson getSaluda addVehicle addPerson"/>
+  <ns1:operation name="getPerson" qname="ns5:getPerson" returnQName="ns5:getPersonReturn" returnType="ns6:Person" soapAction="" xmlns:ns5="http://services" xmlns:ns6="http://classes">
+   <ns1:parameter qname="ns5:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addProduct" qname="ns7:addProduct" soapAction="" xmlns:ns7="http://services"/>
+  <ns1:parameter name="allowedMethods" value="getPerson getSaluda descarga addProduct addVehicle addPerson"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="DemoImplemet"/>
   <ns1:parameter name="className" value="services.DemoImplemet"/>
@@ -51,9 +53,9 @@
   <ns1:parameter name="schemaQualified" value="http://classes,http://services"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://services"/>
   <ns1:parameter name="wsdlServiceElement" value="DemoImplemetService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:classes.Address" xmlns:ns6="http://classes"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns7:TypePerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:classes.TypePerson" xmlns:ns7="http://classes"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:classes.Person" xmlns:ns8="http://classes"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:classes.Address" xmlns:ns8="http://classes"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:TypePerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:classes.TypePerson" xmlns:ns9="http://classes"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:classes.Person" xmlns:ns10="http://classes"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>

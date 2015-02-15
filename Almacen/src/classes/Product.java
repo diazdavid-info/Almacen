@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase producto
@@ -33,7 +34,7 @@ public class Product {
 	/**
 	 * Medidas del producto
 	 */
-	private ArrayList<Measure> mMeasure;
+	private List<Measure> mMeasure;
 	/**
 	 * Modelo del producto
 	 */
@@ -105,7 +106,7 @@ public class Product {
 	 * Devuelve las medidas del producto
 	 * @return ArrayList
 	 */
-	public ArrayList<Measure> getMeasure(){
+	public List<Measure> getMeasure(){
 		return mMeasure;
 	}
 

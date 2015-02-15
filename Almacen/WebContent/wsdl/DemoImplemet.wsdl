@@ -5,6 +5,12 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
    <import namespace="http://classes"/>
+   <element name="descarga">
+    <complexType/>
+   </element>
+   <element name="descargaResponse">
+    <complexType/>
+   </element>
    <element name="getSaluda">
     <complexType>
      <sequence>
@@ -55,6 +61,12 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="addProduct">
+    <complexType/>
+   </element>
+   <element name="addProductResponse">
+    <complexType/>
+   </element>
   </schema>
   <schema elementFormDefault="qualified" targetNamespace="http://classes" xmlns="http://www.w3.org/2001/XMLSchema">
    <complexType name="Address">
@@ -99,6 +111,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="addProductResponse">
+
+      <wsdl:part element="impl:addProductResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="getSaludaRequest">
 
       <wsdl:part element="impl:getSaluda" name="parameters">
@@ -115,9 +135,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="addProductRequest">
+
+      <wsdl:part element="impl:addProduct" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="getSaludaResponse">
 
       <wsdl:part element="impl:getSaludaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="descargaRequest">
+
+      <wsdl:part element="impl:descarga" name="parameters">
 
       </wsdl:part>
 
@@ -134,6 +170,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="getPersonRequest">
 
       <wsdl:part element="impl:getPerson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="descargaResponse">
+
+      <wsdl:part element="impl:descargaResponse" name="parameters">
 
       </wsdl:part>
 
@@ -156,6 +200,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </wsdl:message>
 
    <wsdl:portType name="DemoImplemet">
+
+      <wsdl:operation name="descarga">
+
+         <wsdl:input message="impl:descargaRequest" name="descargaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:descargaResponse" name="descargaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="getSaluda">
 
@@ -205,11 +261,41 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="addProduct">
+
+         <wsdl:input message="impl:addProductRequest" name="addProductRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addProductResponse" name="addProductResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="DemoImplemetSoapBinding" type="impl:DemoImplemet">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="descarga">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="descargaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="descargaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="getSaluda">
 
@@ -276,6 +362,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getPersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addProductResponse">
 
             <wsdlsoap:body use="literal"/>
 

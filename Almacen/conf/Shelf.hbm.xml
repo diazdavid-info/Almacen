@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="classes.Shelf" table="SHELF">
         <id name="mId" type="int" access="field">
-            <column name="MID" />
+            <column name="id" />
             <generator class="assigned" />
         </id>
         <many-to-one name="mProduct" class="classes.Product" access="field" fetch="join">

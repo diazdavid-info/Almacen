@@ -11,5 +11,9 @@ public interface DemoInterfaz {
 	public void addPerson(String namePerson, String type, String locality);
 	
 	public Person getPerson(int id);
+	
+	public void descarga();
+	
+	public void addProduct();
 
 }
