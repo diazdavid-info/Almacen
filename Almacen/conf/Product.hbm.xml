@@ -20,7 +20,7 @@
         <many-to-one name="mManufacturer" class="classes.Manufacturer" access="field" fetch="join">
             <column name="manufacturer_id" />
         </many-to-one>
-        <list name="mMeasure" inverse="false" table="measure" lazy="true" access="field" cascade="all" >
+        <list name="mMeasure" inverse="false" table="measure" lazy="true" access="field" >
             <key>
                 <column name="product_id" />
             </key>

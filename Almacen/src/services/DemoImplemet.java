@@ -1,8 +1,8 @@
 package services;
 
-import java.util.ArrayList;
-
 import hibernate.SessionFactoryUtil;
+
+import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -225,5 +225,48 @@ public class DemoImplemet implements DemoInterfaz{
 		System.out.println("TERMINADO");
 		
 	}
+
+	@Override
+	public void descarga2() {
+		SessionFactory sesion = SessionFactoryUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		Transaction tx = session.beginTransaction();
+		
+		Person person = new Person();
+		person = (Person) session.load(Person.class, 3);
+		
+		//System.out.println("OK");
+		
+		Vehicle vehicle = new Vehicle();
+		vehicle = (Vehicle) session.load(Vehicle.class, 2);
+		
+		Product product = new Product();
+		product = (Product) session.load(Product.class, 2);
+		ArrayList<Product> list = new ArrayList<Product>();
+		list.add(product);
+		
+		Company company = new Company();
+		company = (Company) session.load(Company.class, 20);
+		
+		Unload unload = new Unload();
+		unload.setCompany(company);
+		unload.setDriver(person);
+		unload.setVehicle(vehicle);
+		unload.setTime("13:08");
+		unload.setProduts(list);
+		session.save(unload);
+		
+		//session.save(product);
+		
+		tx.commit();
+		session.close();
+		
+		System.out.println("TERMINADO");
+		
+		
+	}
+
+	
+
 
 }

@@ -1,6 +1,5 @@
 package classes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -146,7 +145,7 @@ public class Unload {
 	 * Configura el ArrayList con los pedidos de la descarga
 	 * @param orders ArrayList
 	 */
-	public void setProduts(ArrayList<Product> products){
+	public void setProduts(List<Product> products){
 		mProducts = products;
 	}
 

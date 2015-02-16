@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services" xmlns:intf="http://services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="putCompany">
+    <complexType>
+     <sequence>
+      <element name="nameCompany" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="putCompanyResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="putCompanyResponse">
+
+      <wsdl:part element="impl:putCompanyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="putCompanyRequest">
+
+      <wsdl:part element="impl:putCompany" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="putServicesImple">
+
+      <wsdl:operation name="putCompany">
+
+         <wsdl:input message="impl:putCompanyRequest" name="putCompanyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:putCompanyResponse" name="putCompanyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="putServicesImpleSoapBinding" type="impl:putServicesImple">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="putCompany">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="putCompanyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="putCompanyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="putServicesImpleService">
+
+      <wsdl:port binding="impl:putServicesImpleSoapBinding" name="putServicesImple">
+
+         <wsdlsoap:address location="http://localhost:8080/Almacen/services/putServicesImple"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

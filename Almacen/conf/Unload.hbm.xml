@@ -21,7 +21,7 @@
             <key>
                 <column name="unload_id" />
             </key>
-            <list-index></list-index>
+            <list-index><column name="id"></column></list-index>
             <one-to-many class="classes.Product" />
         </list>
         <property name="mTime" type="java.lang.String" access="field">

@@ -5,12 +5,16 @@
   <service name="DemoImplemet" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://services"/>
       <parameter name="wsdlServiceElement" value="DemoImplemetService"/>
-      <parameter name="schemaQualified" value="http://classes,http://services"/>
+      <parameter name="schemaQualified" value="http://classes,http://xml.apache.org/xml-soap,http://services"/>
       <parameter name="wsdlServicePort" value="DemoImplemet"/>
       <parameter name="className" value="services.DemoImplemet"/>
       <parameter name="wsdlPortType" value="DemoImplemet"/>
       <parameter name="typeMappingVersion" value="1.2"/>
       <operation xmlns:operNS="http://services" name="descarga" qname="operNS:descarga" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://services" name="descarga2" qname="operNS:descarga2" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://services" xmlns:retNS="http://services" xmlns:rtns="http://classes" name="getDescarga" qname="operNS:getDescarga" returnQName="retNS:getDescargaReturn" returnType="rtns:Unload" soapAction="">
       </operation>
       <operation xmlns:operNS="http://services" xmlns:retNS="http://services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getSaluda" qname="operNS:getSaluda" returnQName="retNS:getSaludaReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombre" type="tns:string"/>
@@ -28,10 +32,30 @@
       </operation>
       <operation xmlns:operNS="http://services" name="addProduct" qname="operNS:addProduct" soapAction="">
       </operation>
-      <parameter name="allowedMethods" value="getPerson getSaluda descarga addProduct addVehicle addPerson"/>
+      <parameter name="allowedMethods" value="getDescarga getPerson getSaluda descarga addProduct addVehicle descarga2 addPerson"/>
 
-      <typeMapping xmlns:ns="http://classes" qname="ns:Address" type="java:classes.Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
-      <typeMapping xmlns:ns="http://classes" qname="ns:TypePerson" type="java:classes.TypePerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;addPerson" type="java:services.AddPerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;addPersonResponse" type="java:services.AddPersonResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;getSaludaResponse" type="java:services.GetSaludaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://services" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;getSaluda" type="java:services.GetSaluda" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;getDescargaResponse" type="java:services.GetDescargaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;addProduct" type="java:services.AddProduct" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;getPersonResponse" type="java:services.GetPersonResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;descarga2Response" type="java:services.Descarga2Response" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
       <typeMapping xmlns:ns="http://classes" qname="ns:Person" type="java:classes.Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;descarga" type="java:services.Descarga" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:Address" type="java:classes.Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:Company" type="java:classes.Company" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;getDescarga" type="java:services.GetDescarga" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;descarga2" type="java:services.Descarga2" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;descargaResponse" type="java:services.DescargaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;getPerson" type="java:services.GetPerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:Unload" type="java:classes.Unload" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;addVehicle" type="java:services.AddVehicle" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:Vehicle" type="java:classes.Vehicle" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;addVehicleResponse" type="java:services.AddVehicleResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://classes" qname="ns:TypePerson" type="java:classes.TypePerson" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://services" qname="ns:&gt;addProductResponse" type="java:services.AddProductResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>
 </deployment>

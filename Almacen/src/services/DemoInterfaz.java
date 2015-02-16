@@ -15,5 +15,7 @@ public interface DemoInterfaz {
 	public void descarga();
 	
 	public void addProduct();
+	
+	public void descarga2();
 
 }

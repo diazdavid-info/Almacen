@@ -4,6 +4,7 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
    <import namespace="http://classes"/>
    <element name="descarga">
     <complexType/>
@@ -11,6 +12,27 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="descargaResponse">
     <complexType/>
    </element>
+   <element name="descarga2">
+    <complexType/>
+   </element>
+   <element name="descarga2Response">
+    <complexType/>
+   </element>
+   <element name="getDescarga">
+    <complexType/>
+   </element>
+   <element name="getDescargaResponse">
+    <complexType>
+     <sequence>
+      <element name="getDescargaReturn" type="tns1:Unload"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
    <element name="getSaluda">
     <complexType>
      <sequence>
@@ -69,6 +91,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </element>
   </schema>
   <schema elementFormDefault="qualified" targetNamespace="http://classes" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://services"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <complexType name="Company">
+    <sequence>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
    <complexType name="Address">
     <sequence>
      <element name="block" nillable="true" type="xsd:string"/>
@@ -100,28 +130,39 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      <element name="typePerson" nillable="true" type="tns1:TypePerson"/>
     </sequence>
    </complexType>
+   <complexType name="Vehicle">
+    <sequence>
+     <element name="id" type="xsd:int"/>
+     <element name="numberPlate" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Unload">
+    <sequence>
+     <element name="company" nillable="true" type="tns1:Company"/>
+     <element name="date" nillable="true" type="xsd:string"/>
+     <element name="driver" nillable="true" type="tns1:Person"/>
+     <element name="id" type="xsd:int"/>
+     <element name="products" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="produts" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="time" nillable="true" type="xsd:string"/>
+     <element name="vehicle" nillable="true" type="tns1:Vehicle"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://services"/>
+   <import namespace="http://classes"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="addVehicleResponse">
+   <wsdl:message name="getDescargaRequest">
 
-      <wsdl:part element="impl:addVehicleResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="addProductResponse">
-
-      <wsdl:part element="impl:addProductResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="getSaludaRequest">
-
-      <wsdl:part element="impl:getSaluda" name="parameters">
+      <wsdl:part element="impl:getDescarga" name="parameters">
 
       </wsdl:part>
 
@@ -135,17 +176,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="addProductRequest">
+   <wsdl:message name="descarga2Response">
 
-      <wsdl:part element="impl:addProduct" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="getSaludaResponse">
-
-      <wsdl:part element="impl:getSaludaResponse" name="parameters">
+      <wsdl:part element="impl:descarga2Response" name="parameters">
 
       </wsdl:part>
 
@@ -159,9 +192,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="addPersonResponse">
+   <wsdl:message name="getDescargaResponse">
 
-      <wsdl:part element="impl:addPersonResponse" name="parameters">
+      <wsdl:part element="impl:getDescargaResponse" name="parameters">
 
       </wsdl:part>
 
@@ -199,6 +232,62 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="addVehicleResponse">
+
+      <wsdl:part element="impl:addVehicleResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addProductResponse">
+
+      <wsdl:part element="impl:addProductResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSaludaRequest">
+
+      <wsdl:part element="impl:getSaluda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addProductRequest">
+
+      <wsdl:part element="impl:addProduct" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSaludaResponse">
+
+      <wsdl:part element="impl:getSaludaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addPersonResponse">
+
+      <wsdl:part element="impl:addPersonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="descarga2Request">
+
+      <wsdl:part element="impl:descarga2" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="DemoImplemet">
 
       <wsdl:operation name="descarga">
@@ -208,6 +297,30 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:descargaResponse" name="descargaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="descarga2">
+
+         <wsdl:input message="impl:descarga2Request" name="descarga2Request">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:descarga2Response" name="descarga2Response">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDescarga">
+
+         <wsdl:input message="impl:getDescargaRequest" name="getDescargaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDescargaResponse" name="getDescargaResponse">
 
        </wsdl:output>
 
@@ -290,6 +403,42 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="descargaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="descarga2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="descarga2Request">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="descarga2Response">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDescarga">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDescargaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDescargaResponse">
 
             <wsdlsoap:body use="literal"/>
 
