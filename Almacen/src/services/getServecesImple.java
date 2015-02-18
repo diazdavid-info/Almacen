@@ -6,6 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import bus.Companies;
+import bus.Persons;
 
 /**
  * Clase para la implementacion de los servicios get
@@ -23,9 +24,19 @@ public class getServecesImple implements getServicesInter{
 	@GET
 	@Path("/getAllCompanies")
 	@Produces(MediaType.TEXT_PLAIN)
+	@Override
 	public String getCompanies() {
 		Companies companies = new Companies();
 		return companies.allCompanies();
+	}
+
+	@GET
+	@Path("/getAllPersons")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public String getPersons() {
+		Persons persons = new Persons();
+		return persons.allPersons();
 	}
 
 }

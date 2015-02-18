@@ -13,5 +13,7 @@ public interface getServicesInter {
 	 * @return String
 	 */
 	public String getCompanies();
+	
+	public String getPersons();
 
 }
