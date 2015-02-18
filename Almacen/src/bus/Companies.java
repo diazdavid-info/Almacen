@@ -29,13 +29,6 @@ public class Companies {
 		session = sesion.openSession();
 	}
 	
-//	private void closeSession(){
-//		sesion.close();
-//		session.close();
-//		sesion = null;
-//		session = null;
-//	}
-	
 	@SuppressWarnings("unchecked")
 	public String allCompanies(){
 		createSession();
@@ -47,6 +40,10 @@ public class Companies {
 		}
 		Gson gson = new Gson();
 		return gson.toJson(list2);
+	}
+	
+	public void saveCompany(String nameCompany){
+		System.out.println("NOMBRE: "+nameCompany);
 	}
 
 }

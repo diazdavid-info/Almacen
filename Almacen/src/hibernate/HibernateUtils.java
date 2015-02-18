@@ -1,8 +1,5 @@
 package hibernate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -26,13 +23,4 @@ public class HibernateUtils {
 	    }
 	    return entity;
 	}
-	
-//	public static <T> List<?> initializeAndUnproxyList(List<?> list, ArrayList<?> arg){
-//		List<?> l = arg;
-//		for (Object object : list) {
-//			l.add((?)initializeAndUnproxy(object));
-//		}
-//		return list;
-//		
-//	}
 }
