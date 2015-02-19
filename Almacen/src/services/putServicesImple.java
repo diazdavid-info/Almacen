@@ -5,6 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
 import bus.Companies;
+import bus.Vehicles;
 
 /**
  * Clase para la implementacion de los servicios put
@@ -21,9 +22,24 @@ public class putServicesImple implements putServicesInter{
 	 */
 	@PUT
 	@Path("/saveCompany")
+	@Override
 	public void putCompany(@QueryParam("nameCompany") String nameCompany){
+		System.out.println("PETICION COMAPAÑIA");
 		Companies companies = new Companies();
 		companies.saveCompany(nameCompany);
+	}
+	
+	/**
+	 * Servicio que almacena un vehículo
+	 * @param numberPlate String Número de la matrícula
+	 */
+	@PUT
+	@Path("/saveVehicle")
+	@Override
+	public void putVehicle(@QueryParam("numberPlate") String numberPlate) {
+		System.out.println("PETICIÓN VIHÍCULO");
+		Vehicles vehicles = new Vehicles();
+		vehicles.saveVehicle(numberPlate);
 	}
 
 }

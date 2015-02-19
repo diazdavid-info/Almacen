@@ -13,4 +13,10 @@ public interface putServicesInter {
 	 * @param nameCompany String Nombre de la compañia
 	 */
 	public void putCompany(String nameCompany);
+	
+	/**
+	 * Servicio que almacena un vehículo
+	 * @param numberPlate String Número de la matrícula
+	 */
+	public void putVehicle(String numberPlate);
 }

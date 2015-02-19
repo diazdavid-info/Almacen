@@ -1,24 +1,26 @@
 package bus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import hibernate.HibernateUtils;
 import hibernate.SessionFactoryUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import com.google.gson.Gson;
+import org.hibernate.Transaction;
 
 import classes.Company;
+
+import com.google.gson.Gson;
 
 public class Companies {
 	
 	SessionFactory sesion;
 	Session session;
 	Query query;
+	Transaction tx;
 	
 	/**
 	 * Método que inicializa los objetos necesarios para trabajar con Hibernate.
@@ -27,6 +29,15 @@ public class Companies {
 	private void createSession(){
 		sesion = SessionFactoryUtil.getSessionFactory();
 		session = sesion.openSession();
+	}
+	
+	/**
+	 * Método que inicializa los objetos necesarios para trabajar con Hibernate.
+	 * Este método inicializa los objetos para realizar una transación
+	 */
+	private void createSessionTransation(){
+		createSession();
+		tx = session.beginTransaction();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -44,6 +55,12 @@ public class Companies {
 	
 	public void saveCompany(String nameCompany){
 		System.out.println("NOMBRE: "+nameCompany);
+		createSessionTransation();
+		System.out.println("Inserto una fila");
+		Company company = new Company();
+		company.setName(nameCompany);
+		session.save(company);
+		tx.commit();
 	}
 
 }
