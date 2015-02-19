@@ -7,6 +7,7 @@ import javax.ws.rs.core.MediaType;
 
 import bus.Companies;
 import bus.Persons;
+import bus.Vehicles;
 
 /**
  * Clase para la implementacion de los servicios get
@@ -31,12 +32,21 @@ public class getServecesImple implements getServicesInter{
 	}
 
 	@GET
-	@Path("/getAllPersons")
+	@Path("/getAllDrivers")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Override
-	public String getPersons() {
+	public String getDrivers() {
 		Persons persons = new Persons();
-		return persons.allPersons();
+		return persons.allDrivers();
+	}
+	
+	@GET
+	@Path("/getAllVehicles")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public String getVehicles() {
+		Vehicles vehicles = new Vehicles();
+		return vehicles.allVehicles();
 	}
 
 }

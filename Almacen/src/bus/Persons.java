@@ -1,9 +1,7 @@
 package bus;
 
-import hibernate.HibernateUtils;
 import hibernate.SessionFactoryUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -31,17 +29,30 @@ public class Persons {
 		session = sesion.openSession();
 	}
 	
+	/**
+	 * Metodo que devuelve todas las personas
+	 * @return String
+	 */
 	@SuppressWarnings("unchecked")
 	public String allPersons(){
 		createSession();
 		query = session.createQuery("from Person");
 		List<Person> list = query.list();
-		List<Person> list2 = new ArrayList<Person>();
-		for (Person person : list) {
-			list2.add(HibernateUtils.initializeAndUnproxy(person));
-		}
 		Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
-		return gson.toJson(list2);
+		return gson.toJson(list);
+	}
+	
+	/**
+	 * Método que devuelve todas las personas que sean conductores
+	 * @return String
+	 */
+	@SuppressWarnings("unchecked")
+	public String allDrivers(){
+		createSession();
+		query = session.createQuery("from Person as p where p.mTypePerson in (from TypePerson t where t.mType = 'Conductor')");
+		List<Person> list = query.list();
+		Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
+		return gson.toJson(list);
 	}
 	
 }

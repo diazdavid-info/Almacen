@@ -14,6 +14,16 @@ public interface getServicesInter {
 	 */
 	public String getCompanies();
 	
-	public String getPersons();
+	/**
+	 * Servicio que devuelve todas las personas que son conductores
+	 * @return String
+	 */
+	public String getDrivers();
+	
+	/**
+	 * Servicio que devuelve todos los vehiculos
+	 * @return String
+	 */
+	public String getVehicles();
 
 }
