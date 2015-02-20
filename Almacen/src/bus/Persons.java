@@ -68,6 +68,13 @@ public class Persons {
 		return gson.toJson(list);
 	}
 	
+	/**
+	 * Método que añade un conductor
+	 * @param nameDriver String
+	 * @param surnameDriver String
+	 * @param telephone String
+	 * @param idAddress int
+	 */
 	public void saveDriver(String nameDriver, String surnameDriver, String telephone, int idAddress){
 		createSessionTransation();
 		Address address = (Address) session.load(Address.class, idAddress);

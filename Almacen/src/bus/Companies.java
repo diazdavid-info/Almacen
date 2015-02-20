@@ -40,6 +40,10 @@ public class Companies {
 		tx = session.beginTransaction();
 	}
 	
+	/**
+	 * Método que solicita todas las compañias
+	 * @return String
+	 */
 	@SuppressWarnings("unchecked")
 	public String allCompanies(){
 		createSession();
@@ -53,6 +57,10 @@ public class Companies {
 		return gson.toJson(list2);
 	}
 	
+	/**
+	 * Método que añade una compañía
+	 * @param nameCompany String
+	 */
 	public void saveCompany(String nameCompany){
 		System.out.println("NOMBRE: "+nameCompany);
 		createSessionTransation();

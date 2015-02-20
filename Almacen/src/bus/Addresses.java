@@ -36,6 +36,19 @@ public class Addresses {
 		tx = session.beginTransaction();
 	}
 	
+	/**
+	 * Método que añade un producto
+	 * @param block String
+	 * @param door String
+	 * @param floor int
+	 * @param locality String
+	 * @param nameVia String
+	 * @param number int
+	 * @param province String
+	 * @param stairs String
+	 * @param typeVia String
+	 * @return String
+	 */
 	public String saveAddress(String block, String door, int floor, String locality, String nameVia, int number, String province, 
 			String stairs, String typeVia){
 		System.out.println("GUARDAR DIRECCIÓN");
