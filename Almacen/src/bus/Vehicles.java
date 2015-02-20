@@ -66,6 +66,7 @@ public class Vehicles {
 		Vehicle vehicle = new Vehicle();
 		vehicle.setNumberPlate(numberPlate);
 		session.save(vehicle);
+		System.out.println("ID: "+vehicle.getId());
 		tx.commit();
 	}
 }

@@ -53,8 +53,18 @@ public class Address {
 	
 	//public Person m_Person;
 
-	public Address(){
-
+	public Address(){}
+	
+	public Address(String block, String door, int floor, String locality, String nameVia, int number, String province, 
+			String stairs, String typeVia){
+		mBlock = block;
+		mDoor = door;
+		mLocality = locality;
+		mNameVia = nameVia;
+		mNumber = number;
+		mProvince = province;
+		mStairs = stairs;
+		mTypeVia = typeVia;
 	}
 
 	public void finalize() throws Throwable {

@@ -25,6 +25,11 @@ public class TypePerson {
 	public TypePerson(){
 
 	}
+	
+	public TypePerson(String type, String description){
+		this.mType = type;
+		this.mDescription = description;
+	}
 
 	public void finalize() throws Throwable {
 		this.mDescription = null;
