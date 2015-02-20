@@ -25,5 +25,7 @@ public interface getServicesInter {
 	 * @return String
 	 */
 	public String getVehicles();
+	
+	public void saveProducts(String jsonProducts);
 
 }

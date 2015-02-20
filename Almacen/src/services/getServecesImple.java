@@ -3,10 +3,12 @@ package services;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import bus.Companies;
 import bus.Persons;
+import bus.Products;
 import bus.Vehicles;
 
 /**
@@ -47,6 +49,17 @@ public class getServecesImple implements getServicesInter{
 	public String getVehicles() {
 		Vehicles vehicles = new Vehicles();
 		return vehicles.allVehicles();
+	}
+
+	@GET
+	@Path("/saveProducts")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public void saveProducts(@QueryParam("products") String jsonProducts) {
+		System.out.println(jsonProducts);
+		Products products = new Products();
+		products.saveProducts(jsonProducts);
+		//System.out.println(URLDecoder.decode(products));
 	}
 
 }
