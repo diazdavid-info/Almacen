@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import bus.Companies;
 import bus.Persons;
-import bus.Products;
+import bus.ProductsBus;
 import bus.Vehicles;
 
 /**
@@ -29,6 +29,7 @@ public class getServecesImple implements getServicesInter{
 	@Produces(MediaType.TEXT_PLAIN)
 	@Override
 	public String getCompanies() {
+		System.out.println("ALL company");
 		Companies companies = new Companies();
 		return companies.allCompanies();
 	}
@@ -38,6 +39,7 @@ public class getServecesImple implements getServicesInter{
 	@Produces(MediaType.TEXT_PLAIN)
 	@Override
 	public String getDrivers() {
+		System.out.println("ALL driver");
 		Persons persons = new Persons();
 		return persons.allDrivers();
 	}
@@ -47,19 +49,37 @@ public class getServecesImple implements getServicesInter{
 	@Produces(MediaType.TEXT_PLAIN)
 	@Override
 	public String getVehicles() {
+		System.out.println("ALL vehiculos");
 		Vehicles vehicles = new Vehicles();
 		return vehicles.allVehicles();
 	}
 
+	/**
+	 * Servicio que almacena un producto
+	 * @param asinProduct String
+	 * @param eanProduct String
+	 * @param descriptionProduct String
+	 * @param modelProduct String
+	 * @param priceProduct Float
+	 * @param weightProduct Float
+	 * @param nameManufactureProduct String
+	 * @param widthProduct Float
+	 * @param highProduct Float
+	 * @param longProduct Float
+	 */
 	@GET
-	@Path("/saveProducts")
+	@Path("/saveProduct")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Override
-	public void saveProducts(@QueryParam("products") String jsonProducts) {
-		System.out.println(jsonProducts);
-		Products products = new Products();
-		products.saveProducts(jsonProducts);
-		//System.out.println(URLDecoder.decode(products));
+	public String saveProduct(@QueryParam("asinProduct") String asinProduct, @QueryParam("eanProduct") String eanProduct,
+			@QueryParam("descriptionProduct") String descriptionProduct, @QueryParam("modelProduct") String modelProduct, @QueryParam("priceProduct") Float priceProduct,
+			@QueryParam("weightProduct") Float weightProduct, @QueryParam("nameManufactureProduct") String nameManufactureProduct,
+			@QueryParam("widthProduct") Float widthProduct, @QueryParam("highProduct") Float highProduct, @QueryParam("longProduct") Float longProduct) {
+		
+		ProductsBus product = new ProductsBus();
+		return product.saveProduct(asinProduct, eanProduct, descriptionProduct, 
+				modelProduct, priceProduct, weightProduct, nameManufactureProduct, 
+				widthProduct, highProduct, longProduct);
 	}
 
 }

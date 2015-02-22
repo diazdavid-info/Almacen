@@ -52,6 +52,8 @@ public class Vehicles {
 		for (Vehicle vechicle : list) {
 			list2.add(HibernateUtils.initializeAndUnproxy(vechicle));
 		}
+		session.flush();
+		session.close();
 		Gson gson = new Gson();
 		return gson.toJson(list2);
 	}

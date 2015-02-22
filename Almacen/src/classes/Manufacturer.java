@@ -18,8 +18,10 @@ public class Manufacturer {
 	 */
 	private String mName;
 
-	public Manufacturer(){
-
+	public Manufacturer(){}
+	
+	public Manufacturer(String name){
+		mName = name;
 	}
 
 	public void finalize() throws Throwable {

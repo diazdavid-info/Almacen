@@ -60,6 +60,22 @@ public class putServicesImple implements putServicesInter{
 		Persons persons = new Persons();
 		persons.saveDriver(nameDriver, surnameDriver, telephone, idAddress);		
 	}
+	
+	/**
+	 * Servicio que almacena un trabajador
+	 * @param nameWorker String
+	 * @param surnameWorker String
+	 * @param telephone String
+	 * @param idAddress int
+	 */
+	@PUT
+	@Path("/saveWorker")
+	@Override
+	public void putWorker(@QueryParam("nameDriver") String nameWorker, @QueryParam("surnameDriver") String surnameWorker, 
+			@QueryParam("telephone") String telephone, @QueryParam("idAddress") int idAddress) {
+		Persons persons = new Persons();
+		persons.saveWorker(nameWorker, surnameWorker, telephone, idAddress);		
+	}
 
 	/**
 	 * Servicio que almacena la dirección y devuelve la entidad

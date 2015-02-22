@@ -1,7 +1,5 @@
 package classes;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Clase producto
@@ -32,9 +30,17 @@ public class Product {
 	 */
 	private Manufacturer mManufacturer;
 	/**
-	 * Medidas del producto
+	 * Ancho del producto
 	 */
-	private List<Measure> mMeasure;
+	private Measure mWidth;
+	/**
+	 * Alto del producto
+	 */
+	private Measure mHigh;
+	/**
+	 * Largo del producto
+	 */
+	private Measure mLong;
 	/**
 	 * Modelo del producto
 	 */
@@ -49,7 +55,20 @@ public class Product {
 	private Float mWeight;
 
 	public Product(){
-
+		
+	}
+	
+	public Product(String codeAsis, String codeEan, String description, String model, Float price, Float weight, Measure width, Measure high, Measure lon){
+		//mMeasure = new ArrayList<Measure>();
+		mCodeAsin = codeAsis;
+		mCodeEan = codeEan;
+		mDescription = description;
+		mModel = model;
+		mPrice = price;
+		mWeight = weight;
+		mWidth = width;
+		mHigh = high;
+		mLong = lon;
 	}
 
 	public void finalize() throws Throwable {
@@ -103,14 +122,6 @@ public class Product {
 	}
 
 	/**
-	 * Devuelve las medidas del producto
-	 * @return ArrayList
-	 */
-	public List<Measure> getMeasure(){
-		return mMeasure;
-	}
-
-	/**
 	 * Devuelve el modelo del producto
 	 * @return String
 	 */
@@ -132,6 +143,30 @@ public class Product {
 	 */
 	public Float getWeight(){
 		return mWeight;
+	}
+	
+	/**
+	 * Devuelve el ancho del producto
+	 * @return Measure
+	 */
+	public Measure getWidth(){
+		return mWidth;
+	}
+	
+	/**
+	 * Devuelve el alto del producto
+	 * @return Measure
+	 */
+	public Measure getHigh(){
+		return mHigh;
+	}
+	
+	/**
+	 * Devuelve el largo del producto
+	 * @return Measure
+	 */
+	public Measure getLong(){
+		return mLong;
 	}
 
 	/**
@@ -175,14 +210,6 @@ public class Product {
 	}
 
 	/**
-	 * Configura las medidas del producto
-	 * @param measures ArrayList
-	 */
-	public void setMeasure(ArrayList<Measure> measures){
-		mMeasure = measures;
-	}
-
-	/**
 	 * Configura el modelo del producto
 	 * @param model String
 	 */
@@ -205,5 +232,28 @@ public class Product {
 	public void setWeight(Float weight){
 		mWeight = weight;
 	}
-
+	
+	/**
+	 * Configura el ancho del producto
+	 * @param width Measure
+	 */
+	public void setWidth(Measure width){
+		mWidth = width;
+	}
+	
+	/**
+	 * Configura el alto del producto
+	 * @param high Measure
+	 */
+	public void setHigh(Measure high){
+		mHigh = high;
+	}
+	
+	/**
+	 * Configura el largo del producto
+	 * @param lon Measure
+	 */
+	public void setLong(Measure lon){
+		mLong = lon;
+	}
 }

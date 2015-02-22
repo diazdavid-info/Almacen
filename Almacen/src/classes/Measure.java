@@ -22,8 +22,11 @@ public class Measure {
 	 */
 	private Float mValue;
 
-	public Measure(){
-
+	public Measure(){}
+	
+	public Measure(String type, Float value){
+		mType = type;
+		mValue = value;
 	}
 
 	public void finalize() throws Throwable {

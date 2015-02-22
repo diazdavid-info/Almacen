@@ -26,6 +26,20 @@ public interface getServicesInter {
 	 */
 	public String getVehicles();
 	
-	public void saveProducts(String jsonProducts);
+	/**
+	 * Servicio que almacena un producto
+	 * @param asinProduct String
+	 * @param eanProduct String
+	 * @param descriptionProduct String
+	 * @param modelProduct String
+	 * @param priceProduct Float
+	 * @param weightProduct Float
+	 * @param nameManufactureProduct String
+	 * @param widthProduct Float
+	 * @param highProduct Float
+	 * @param longProduct Float
+	 */
+	public String saveProduct(String asinProduct, String eanProduct, String descriptionProduct, String modelProduct, Float priceProduct,
+			Float weightProduct, String nameManufactureProduct, Float widthProduct, Float highProduct, Float longProduct);
 
 }

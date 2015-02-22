@@ -6,7 +6,7 @@
     <class name="classes.Product" table="product">
         <id name="mId" type="int" access="field">
             <column name="id" />
-            <generator class="increment" />
+            <generator class="identity" />
         </id>
         <property name="mCodeAsin" type="java.lang.String" access="field">
             <column name="asin" length="50" />
@@ -17,16 +17,18 @@
         <property name="mDescription" type="java.lang.String" access="field">
             <column name="description" length="250" />
         </property>
-        <many-to-one name="mManufacturer" class="classes.Manufacturer" access="field" fetch="join">
+        <many-to-one name="mManufacturer" class="classes.Manufacturer" access="field" fetch="select">
             <column name="manufacturer_id" />
         </many-to-one>
-        <list name="mMeasure" inverse="false" table="measure" lazy="true" access="field" >
-            <key>
-                <column name="product_id" />
-            </key>
-            <list-index></list-index>
-            <one-to-many class="classes.Measure" />
-        </list>
+        <many-to-one name="mWidth" class="classes.Measure" access="field" fetch="select">
+            <column name="width_id" />
+        </many-to-one>
+        <many-to-one name="mHigh" class="classes.Measure" access="field" fetch="select">
+            <column name="high_id" />
+        </many-to-one>
+        <many-to-one name="mLong" class="classes.Measure" access="field" fetch="select">
+            <column name="long_id" />
+        </many-to-one>
         <property name="mModel" type="java.lang.String" access="field">
             <column name="model" length="250" />
         </property>

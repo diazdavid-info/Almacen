@@ -8,6 +8,13 @@
   <property name="hibernate.connection.url">jdbc:mysql://localhost/almacenDavid</property>
   <property name="hibernate.connection.username">David</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+  <property name="hibernate.c3p0.acquire_increment">1</property>
+  <property name="hibernate.c3p0.idle_test_period">100</property>
+  <property name="hibernate.c3p0.max_size">5</property>
+  <property name="hibernate.c3p0.max_statements">10</property>
+  <property name="hibernate.c3p0.min_size">3</property>
+  <property name="hibernate.c3p0.timeout">200</property>
   <mapping class="classes.Vehicle" resource="Vehicle.hbm.xml"/>
   <mapping class="classes.Person" resource="Person.hbm.xml"/>
   <mapping class="classes.Address" resource="Address.hbm.xml"/>

@@ -30,6 +30,15 @@ public interface putServicesInter {
 	public void putDriver(String nameDriver, String surnameDriver, String telephone, int idAddress);
 	
 	/**
+	 * Servicio que almacena un trabajador
+	 * @param nameWorker String
+	 * @param surnameWorker String
+	 * @param telephone String
+	 * @param idAddress int
+	 */
+	public void putWorker(String nameWorker, String surnameWorker, String telephone, int idAddress);
+	
+	/**
 	 * Servicio que almacena la dirección y devuelve la entidad
 	 * @param block String
 	 * @param door String

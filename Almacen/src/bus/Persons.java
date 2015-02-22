@@ -64,6 +64,7 @@ public class Persons {
 		createSession();
 		query = session.createQuery("from Person as p where p.mTypePerson in (from TypePerson t where t.mType = 'Conductor')");
 		List<Person> list = query.list();
+		
 		Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
 		return gson.toJson(list);
 	}
@@ -83,6 +84,28 @@ public class Persons {
 		Person person = new Person();
 		person.setName(nameDriver);
 		person.setSurname(surnameDriver);
+		person.setTelefoneNumber(telephone);
+		person.setAddress(address);
+		person.setTypePerson(typePerson);
+		session.save(person);
+		tx.commit();
+	}
+	
+	/**
+	 * Método que añade un trabajador
+	 * @param nameDriver String
+	 * @param surnameDriver String
+	 * @param telephone String
+	 * @param idAddress int
+	 */
+	public void saveWorker(String nameWorker, String surnameWorker, String telephone, int idAddress){
+		createSessionTransation();
+		Address address = (Address) session.load(Address.class, idAddress);
+		TypePerson typePerson = new TypePerson("Trabajador", "Trabajador");
+		session.save(typePerson);
+		Person person = new Person();
+		person.setName(nameWorker);
+		person.setSurname(surnameWorker);
 		person.setTelefoneNumber(telephone);
 		person.setAddress(address);
 		person.setTypePerson(typePerson);
