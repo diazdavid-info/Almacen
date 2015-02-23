@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+	<order>
+		<customer>
+			<name>Cliente</name>
+			<surname>cliente</surname>
+			<telephone>123456789</telephone>
+			<address>
+				<block>2</block>
+				<door>A</door>
+				<floor>5</floor>
+				<locality>Madrid</locality>
+				<namevia>Chile</namevia>
+				<number>2</number>
+				<province>Madrid</province>
+				<stairs>Der</stairs>
+				<typevia>Calle</typevia>
+			</address>
+		</customer>
+		<products>
+			<product>
+				<asin>123456</asin>
+			</product>
+			<product>
+				<asin>234567</asin>
+			</product>
+		</products>
+	</order>
+</orders>

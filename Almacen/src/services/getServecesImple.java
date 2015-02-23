@@ -136,4 +136,11 @@ public class getServecesImple implements getServicesInter{
 		downloads.saveDownloadProduct(idUnload, idProduct);
 	}
 
+	@Override
+	public String saveLoad(int company, int driver, int vehicle, String date,
+			String time, int worker) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -66,6 +66,7 @@ public interface getServicesInter {
 	 */
 	public String saveUnload(int company, int driver, int vehicle, String date, String time, int worker);
 	
+	public String saveLoad(int company, int driver, int vehicle, String date, String time, int worker);
 	/**
 	 * Servicio que almacena la asociación entre las descarga y el producto
 	 * @param idUnload int

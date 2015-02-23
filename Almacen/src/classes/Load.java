@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,7 +31,7 @@ public class Load {
 	/**
 	 * Listado de carga
 	 */
-	private ArrayList<Order> mOrders;
+	private List<Order> mOrders;
 	/**
 	 * Hora de la carga
 	 */
@@ -41,7 +42,7 @@ public class Load {
 	private Vehicle mVehicle;
 
 	public Load(){
-
+		mOrders = new ArrayList<Order>();
 	}
 
 	public void finalize() throws Throwable {
@@ -89,7 +90,7 @@ public class Load {
 	 * Devuelve el listado de pedidos
 	 * @return ArrayList
 	 */
-	public ArrayList<Order> getOrders(){
+	public List<Order> getOrders(){
 		return mOrders;
 	}
 
@@ -163,6 +164,10 @@ public class Load {
 	 */
 	public void setVehicle(Vehicle vehicle){
 		mVehicle = vehicle;
+	}
+	
+	public void addOrder(Order order){
+		mOrders.add(order);
 	}
 
 }
