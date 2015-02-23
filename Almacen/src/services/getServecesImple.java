@@ -8,6 +8,8 @@ import javax.ws.rs.core.MediaType;
 
 import bus.Companies;
 import bus.Downloads;
+import bus.Loads;
+import bus.Orders;
 import bus.Persons;
 import bus.ProductsBus;
 import bus.Shelves;
@@ -136,11 +138,58 @@ public class getServecesImple implements getServicesInter{
 		downloads.saveDownloadProduct(idUnload, idProduct);
 	}
 
+	/**
+	 * Servicio que almacena una descarga
+	 * @param company int
+	 * @param driver int
+	 * @param vehicle int
+	 * @param date String
+	 * @param time String
+	 * @param worker int
+	 * @return String
+	 */
+	@GET
+	@Path("/saveLoad")
+	@Produces(MediaType.TEXT_PLAIN)
 	@Override
-	public String saveLoad(int company, int driver, int vehicle, String date,
-			String time, int worker) {
-		// TODO Auto-generated method stub
-		return null;
+	public String saveLoad(@QueryParam("company") int company, @QueryParam("driver") int driver, @QueryParam("vehicle") int vehicle, 
+			@QueryParam("date") String date, @QueryParam("time") String time, @QueryParam("worker") int worker) {
+		Loads loads = new Loads();
+		return loads.saveLoad(company, driver, vehicle, date, time, worker);
+	}
+
+	/**
+	 * Servicio que almacena los pedidos
+	 * @param date String
+	 * @param person int
+	 * @param price Float
+	 * @return String
+	 */
+	@GET
+	@Path("/saveOrder")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public String saveOrders(@QueryParam("date") String date, @QueryParam("person") int person, @QueryParam("price") Float price) {
+		Orders orders = new Orders();
+		return orders.saveOrder(date, person, price);
+	}
+
+	/**
+	 * Servicio que almacena un cliente
+	 * @param name String
+	 * @param surname String
+	 * @param telephone String
+	 * @param address int
+	 * @return String
+	 */
+	@GET
+	@Path("/saveClient")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public String saveClient(@QueryParam("name") String name, @QueryParam("surname") String surname, @QueryParam("telephone") String telephone, 
+			@QueryParam("address") int address) {
+		Persons persons = new Persons();
+		return persons.saveClient(name, surname, telephone, address);
 	}
 
 }

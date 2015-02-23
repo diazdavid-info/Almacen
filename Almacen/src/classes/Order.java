@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,10 +31,17 @@ public class Order {
 	/**
 	 * ArrayList Productos
 	 */
-	private ArrayList<Product> mProducts;
+	private List<Product> mProducts;
 
 	public Order(){
-
+		mProducts = new ArrayList<Product>();
+	}
+	
+	public Order(String date, Person person, Float price){
+		this();
+		mDate = date;
+		mPerson = person;
+		mPrice = price;
 	}
 
 	public void finalize() throws Throwable {
@@ -79,7 +87,7 @@ public class Order {
 	 * Devuelve los productor del pedidio
 	 * @return ArrayList
 	 */
-	public ArrayList<Product> getProducts(){
+	public List<Product> getProducts(){
 		return mProducts;
 	}
 
@@ -121,6 +129,14 @@ public class Order {
 	 */
 	public void setProducts(ArrayList<Product> products){
 		mProducts = products;
+	}
+	
+	/**
+	 * Método que añade un producto a la lista
+	 * @param product Product
+	 */
+	public void addProduct(Product product){
+		mProducts.add(product);
 	}
 
 }

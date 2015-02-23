@@ -107,6 +107,8 @@ public class Persons {
 		person.setTypePerson(typePerson);
 		session.save(person);
 		tx.commit();
+		session.close();
+		session = null;
 	}
 	
 	/**
@@ -129,6 +131,26 @@ public class Persons {
 		person.setTypePerson(typePerson);
 		session.save(person);
 		tx.commit();
+		session.close();
+		session = null;
+	}
+	
+	public String saveClient(String nameClient, String surnameClient, String telephone, int idAddress){
+		createSessionTransation();
+		Address address = (Address) session.load(Address.class, idAddress);
+		TypePerson typePerson = new TypePerson("Cliente", "Cliente");
+		session.save(typePerson);
+		Person person = new Person();
+		person.setName(nameClient);
+		person.setSurname(surnameClient);
+		person.setTelefoneNumber(telephone);
+		person.setAddress(address);
+		person.setTypePerson(typePerson);
+		session.save(person);
+		tx.commit();
+		session.close();
+		session = null;
+		return String.valueOf(person.getId());
 	}
 	
 }

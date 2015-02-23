@@ -1,5 +1,6 @@
 package services;
 
+
 /**
  * Interfaz para los servicios get
  * @author David Díaz
@@ -66,12 +67,41 @@ public interface getServicesInter {
 	 */
 	public String saveUnload(int company, int driver, int vehicle, String date, String time, int worker);
 	
+	/**
+	 * Servicio que almacena una descarga
+	 * @param company int
+	 * @param driver int
+	 * @param vehicle int
+	 * @param date String
+	 * @param time String
+	 * @param worker int
+	 * @return String
+	 */
 	public String saveLoad(int company, int driver, int vehicle, String date, String time, int worker);
+	
 	/**
 	 * Servicio que almacena la asociación entre las descarga y el producto
 	 * @param idUnload int
 	 * @param idProduct int
 	 */
 	public void saveProductUnload(int idUnload, int idProduct);
-
+	
+	/**
+	 * Servicio que almacena los pedidos
+	 * @param date String
+	 * @param person int
+	 * @param price Float
+	 * @return String
+	 */
+	public String saveOrders(String date, int person, Float price);
+	
+	/**
+	 * Servicio que almacena un cliente
+	 * @param name String
+	 * @param surname String
+	 * @param telephone String
+	 * @param address int
+	 * @return String
+	 */
+	public String saveClient(String name, String surname, String telephone, int address);
 }

@@ -44,6 +44,15 @@ public class Load {
 	public Load(){
 		mOrders = new ArrayList<Order>();
 	}
+	
+	public Load(Company company, String date, Person driver, String time, Vehicle vehicle){
+		this();
+		mCompany = company;
+		mDate = date;
+		mDriver = driver;
+		mTime = time;
+		mVehicle = vehicle;
+	}
 
 	public void finalize() throws Throwable {
 		this.mCompany = null;

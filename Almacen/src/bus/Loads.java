@@ -8,12 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import classes.Company;
+import classes.Load;
 import classes.Person;
-import classes.Product;
-import classes.Unload;
 import classes.Vehicle;
 
-public class Downloads {
+public class Loads {
 
 	SessionFactory sesion;
 	Session session;
@@ -48,33 +47,17 @@ public class Downloads {
 	 * @param idWorker int
 	 * @return String
 	 */
-	public String saveDownload(int idCompany, int idDriver, int idVehicle, String date, String time, int idWorker){
+	public String saveLoad(int idCompany, int idDriver, int idVehicle, String date, String time, int idWorker){
 		createSessionTransation();
 		Company company = (Company) session.load(Company.class, idCompany);
 		Person driver = (Person) session.load(Person.class, idDriver);
 		Vehicle vehicle = (Vehicle) session.load(Vehicle.class, idVehicle);
-		Person person = (Person) session.load(Person.class, idWorker);
-		Unload unload = new Unload(company, date, driver, time, vehicle);
-		session.save(unload);
+		Person worker = (Person) session.load(Person.class, idWorker);
+		Load load = new Load(company, date, driver, time, vehicle);
+		session.save(load);
 		tx.commit();
 		session.close();
-		return String.valueOf(unload.getId());
-	}
-	
-	/**
-	 * Método que asocia un producto a una descarga
-	 * @param idUnload int
-	 * @param idProduct int
-	 */
-	public void saveDownloadProduct(int idUnload, int idProduct){
-		createSessionTransation();
-		Product product = (Product) session.load(Product.class, idProduct);
-		System.out.println(product.getId());
-		Unload unload = (Unload) session.load(Unload.class, idUnload);
-		System.out.println(unload.getId());
-		unload.addProduct(product);
-		session.save(unload);
-		session.close();
-		tx.commit();
+		session = null;
+		return String.valueOf(load.getId());
 	}
 }
