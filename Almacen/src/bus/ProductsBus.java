@@ -64,7 +64,7 @@ public class ProductsBus {
 		
 		Shelves shelves = new Shelves();
 		shelves.saveProduct(product);
-		
+		System.out.println("SAVE PRODUCT");
 		Gson gson = new Gson();
 		return gson.toJson(product);
 		

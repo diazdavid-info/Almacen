@@ -54,6 +54,7 @@ public class Vehicles {
 		}
 		session.flush();
 		session.close();
+		session = null;
 		Gson gson = new Gson();
 		return gson.toJson(list2);
 	}

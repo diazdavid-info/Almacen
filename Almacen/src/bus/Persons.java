@@ -64,9 +64,27 @@ public class Persons {
 		createSession();
 		query = session.createQuery("from Person as p where p.mTypePerson in (from TypePerson t where t.mType = 'Conductor')");
 		List<Person> list = query.list();
-		
 		Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
-		return gson.toJson(list);
+		String result = gson.toJson(list);
+		session.close();
+		session = null;
+		return result;
+	}
+	
+	/**
+	 * Método que devuelve todas las personas que son trabajadores
+	 * @return String
+	 */
+	@SuppressWarnings("unchecked")
+	public String allWorkers(){
+		createSession();
+		query = session.createQuery("from Person as p where p.mTypePerson in (from TypePerson t where t.mType = 'Trabajador')");
+		List<Person> list = query.list();
+		Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new PersonSerializer()).create();
+		String result = gson.toJson(list);
+		session.close();
+		session = null;
+		return result;
 	}
 	
 	/**

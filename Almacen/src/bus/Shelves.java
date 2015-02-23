@@ -2,14 +2,20 @@ package bus;
 
 import hibernate.SessionFactoryUtil;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import tools.registerAdapter.ShelfSerializer;
 import classes.Product;
 import classes.Shelf;
 import classes.Situation;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Shelves {
 
@@ -34,6 +40,18 @@ public class Shelves {
 	private void createSessionTransation(){
 		createSession();
 		tx = session.beginTransaction();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String allShelves(){
+		createSession();
+		query = session.createQuery("from Shelf");
+		List<Shelf> list = query.list();
+		Gson gson = new GsonBuilder().registerTypeAdapter(Shelf.class, new ShelfSerializer()).create();
+		String result = gson.toJson(list);
+		session.close();
+		session = null;
+		return result;
 	}
 	
 	public void saveProduct(Product product){

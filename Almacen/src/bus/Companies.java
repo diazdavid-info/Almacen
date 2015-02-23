@@ -55,6 +55,7 @@ public class Companies {
 		}
 		session.flush();
 		session.close();
+		session = null;
 		Gson gson = new Gson();
 		return gson.toJson(list2);
 	}

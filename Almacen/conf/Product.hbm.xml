@@ -17,7 +17,7 @@
         <property name="mDescription" type="java.lang.String" access="field">
             <column name="description" length="250" />
         </property>
-        <many-to-one name="mManufacturer" class="classes.Manufacturer" access="field" fetch="select">
+        <many-to-one name="mManufacturer" class="classes.Manufacturer" access="field" fetch="select" cascade="all">
             <column name="manufacturer_id" />
         </many-to-one>
         <many-to-one name="mWidth" class="classes.Measure" access="field" fetch="select">

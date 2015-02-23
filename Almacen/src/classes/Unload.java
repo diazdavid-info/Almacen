@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class Unload {
 	/**
 	 * ArrayList con los productos de la descarga
 	 */
-	private List<Product> mProducts;
+	private List<Product> mProducts = new ArrayList<Product>();
 	/**
 	 * Hora de la descarga
 	 */
@@ -40,8 +41,14 @@ public class Unload {
 	 */
 	private Vehicle mVehicle;
 
-	public Unload(){
-
+	public Unload(){}
+	
+	public Unload(Company company, String date, Person driver, String time, Vehicle vehicle){
+		mCompany = company;
+		mDate = date;
+		mDriver = driver;
+		mTime = time;
+		mVehicle = vehicle;
 	}
 
 	public void finalize() throws Throwable {
@@ -163,6 +170,10 @@ public class Unload {
 	 */
 	public void setVehicle(Vehicle vehicle){
 		mVehicle = vehicle;
+	}
+	
+	public void addProduct(Product product){
+		mProducts.add(product);
 	}
 
 }

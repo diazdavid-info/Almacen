@@ -4,9 +4,9 @@
 <!-- Generated 14-feb-2015 21:28:57 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="classes.Unload" table="unload">
-        <id name="mId" type="int" access="field">
-            <column name="id" />
-            <generator class="increment" />
+        <id name="mId" type="int" access="field" >
+            <column name="id"/>
+            <generator class="identity" />
         </id>
         <many-to-one name="mCompany" class="classes.Company" access="field" fetch="select">
             <column name="company_id" />
@@ -17,11 +17,11 @@
         <many-to-one name="mDriver" class="classes.Person" access="field" fetch="select">
             <column name="person_id" />
         </many-to-one>
-        <list name="mProducts" inverse="false" table="product" lazy="true" access="field">
+        <list name="mProducts" table="product" access="field">
             <key>
                 <column name="unload_id" />
             </key>
-            <list-index><column name="id"></column></list-index>
+            <list-index><column name="idx"></column></list-index>
             <one-to-many class="classes.Product" />
         </list>
         <property name="mTime" type="java.lang.String" access="field">
