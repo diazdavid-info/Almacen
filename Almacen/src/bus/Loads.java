@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import classes.Company;
 import classes.Load;
+import classes.Order;
 import classes.Person;
 import classes.Vehicle;
 
@@ -59,5 +60,22 @@ public class Loads {
 		session.close();
 		session = null;
 		return String.valueOf(load.getId());
+	}
+	
+	/**
+	 * Método que asocia a la carga los pedidos
+	 * @param load int
+	 * @param order int
+	 */
+	public void saveLoadOrders(int idLoad, int idOrder){
+		createSessionTransation();
+		Order order = (Order) session.load(Order.class, idOrder);
+		Load load = (Load) session.load(Load.class, idLoad);
+		load.addOrder(order);
+		session.saveOrUpdate(load);
+		tx.commit();
+		session.close();
+		session = null;
+		
 	}
 }

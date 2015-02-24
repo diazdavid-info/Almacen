@@ -1,5 +1,7 @@
 package bus;
 
+import java.util.List;
+
 import hibernate.SessionFactoryUtil;
 
 import org.hibernate.Query;
@@ -9,6 +11,7 @@ import org.hibernate.Transaction;
 
 import classes.Order;
 import classes.Person;
+import classes.Product;
 
 public class Orders {
 
@@ -35,6 +38,13 @@ public class Orders {
 		tx = session.beginTransaction();
 	}
 	
+	/**
+	 * Método que almacena un pedido
+	 * @param date String
+	 * @param idPerson int
+	 * @param price Float
+	 * @return String
+	 */
 	public String saveOrder(String date, int idPerson, Float price){
 		createSessionTransation();
 		Person person = (Person) session.load(Person.class, idPerson);
@@ -42,5 +52,32 @@ public class Orders {
 		session.save(order);
 		tx.commit();
 		return String.valueOf(order.getId());
+	}
+	
+	/**
+	 * Método que asocia los productos a un pedido
+	 * @param asin String
+	 * @param idOrder int
+	 * @return String
+	 */
+	@SuppressWarnings("unchecked")
+	public String saveProductOrder(String asin, int idOrder){
+		Boolean result = false;
+		createSessionTransation();
+		query = session.createQuery("from Person as p where p.mAsin = '"+asin+"'");
+		List<Product> list = query.list();
+		if(list.size() > 0){
+			Product product = list.get(0);
+			Order order = (Order) session.load(Order.class, idOrder);
+			order.addProduct(product);
+			session.saveOrUpdate(order);
+			tx.commit();
+			result = true;
+			Shelves shelves = new Shelves();
+			shelves.deleteProduct(product.getId());
+		}
+		session.close();
+		session = null;
+		return "{result:"+result+",order:"+idOrder+"}";
 	}
 }

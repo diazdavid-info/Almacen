@@ -173,6 +173,20 @@ public class getServecesImple implements getServicesInter{
 		Orders orders = new Orders();
 		return orders.saveOrder(date, person, price);
 	}
+	
+	/**
+	 * Servicio que asocia a la carga los pedidos
+	 * @param load int
+	 * @param order int
+	 */
+	@GET
+	@Path("/saveLoadOrders")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public void saveLoadOrders(@QueryParam("load") int load, @QueryParam("order") int order){
+		Loads loads = new Loads();
+		loads.saveLoadOrders(load, order);
+	}
 
 	/**
 	 * Servicio que almacena un cliente
@@ -190,6 +204,20 @@ public class getServecesImple implements getServicesInter{
 			@QueryParam("address") int address) {
 		Persons persons = new Persons();
 		return persons.saveClient(name, surname, telephone, address);
+	}
+	
+	/**
+	 * Servicio que asocia los productos a la carga y da de baja los productos de las ubicaciones
+	 * @param asin String
+	 * @param order int
+	 * @return String
+	 */
+	@GET
+	@Path("/saveProductOrder")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Override
+	public String saveProductOrder(@QueryParam("asin") String asin, @QueryParam("order") int order){
+		return null;
 	}
 
 }

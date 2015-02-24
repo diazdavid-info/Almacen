@@ -96,6 +96,13 @@ public interface getServicesInter {
 	public String saveOrders(String date, int person, Float price);
 	
 	/**
+	 * Servicio que asocia a la carga los pedidos
+	 * @param load int
+	 * @param order int
+	 */
+	public void saveLoadOrders(int load, int order);
+	
+	/**
 	 * Servicio que almacena un cliente
 	 * @param name String
 	 * @param surname String
@@ -104,4 +111,12 @@ public interface getServicesInter {
 	 * @return String
 	 */
 	public String saveClient(String name, String surname, String telephone, int address);
+	
+	/**
+	 * Servicio que asocia los productos a la carga y da de baja los productos de las ubicaciones
+	 * @param asin String
+	 * @param order int
+	 * @return String
+	 */
+	public String saveProductOrder(String asin, int order);
 }

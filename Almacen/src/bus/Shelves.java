@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import tools.registerAdapter.ShelfSerializer;
+import classes.Person;
 import classes.Product;
 import classes.Shelf;
 import classes.Situation;
@@ -42,6 +43,10 @@ public class Shelves {
 		tx = session.beginTransaction();
 	}
 	
+	/**
+	 * Método que devuelve todas las ubicaciones
+	 * @return String
+	 */
 	@SuppressWarnings("unchecked")
 	public String allShelves(){
 		createSession();
@@ -54,6 +59,10 @@ public class Shelves {
 		return result;
 	}
 	
+	/**
+	 * Método que ubica un producto
+	 * @param product Product
+	 */
 	public void saveProduct(Product product){
 		createSessionTransation();
 		Shelf shelf = new Shelf();
@@ -62,5 +71,20 @@ public class Shelves {
 		session.save(shelf);
 		tx.commit();
 		session.close();
+	}
+	
+	/**
+	 * Método que borra un producto de su ubicación
+	 * @param idProduct int
+	 */
+	@SuppressWarnings("unchecked")
+	public void deleteProduct(int idProduct) {
+		createSessionTransation();
+		query = session.createQuery("from Shelf as s where s.mProduct in (from Product)");
+		List<Shelf> list = query.list();
+		Shelf shelf = list.get(0);
+		session.delete(shelf);
+		session.close();
+		session = null;
 	}
 }

@@ -73,8 +73,8 @@ public class Downloads {
 		Unload unload = (Unload) session.load(Unload.class, idUnload);
 		System.out.println(unload.getId());
 		unload.addProduct(product);
-		session.save(unload);
-		session.close();
+		session.saveOrUpdate(unload);
+		//session.close();
 		tx.commit();
 	}
 }
