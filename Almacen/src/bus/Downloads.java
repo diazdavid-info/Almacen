@@ -65,7 +65,7 @@ public class Downloads {
 	}
 	
 	/**
-	 * Método que asocia un producto a una descarga
+	 * Método que asocia un producto a una descarga 
 	 * @param idUnload int
 	 * @param idProduct int
 	 */
