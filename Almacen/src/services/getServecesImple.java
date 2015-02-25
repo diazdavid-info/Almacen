@@ -217,7 +217,8 @@ public class getServecesImple implements getServicesInter{
 	@Produces(MediaType.TEXT_PLAIN)
 	@Override
 	public String saveProductOrder(@QueryParam("asin") String asin, @QueryParam("order") int order){
-		return null;
+		Orders orders = new Orders();
+		return orders.saveProductOrder(asin, order);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import classes.Company;
 import classes.Load;
+import classes.LogJobs;
 import classes.Order;
 import classes.Person;
 import classes.Vehicle;
@@ -54,6 +55,8 @@ public class Loads {
 		Person driver = (Person) session.load(Person.class, idDriver);
 		Vehicle vehicle = (Vehicle) session.load(Vehicle.class, idVehicle);
 		Person worker = (Person) session.load(Person.class, idWorker);
+		LogJobs log = new LogJobs(worker, "Carga");
+		session.save(log);
 		Load load = new Load(company, date, driver, time, vehicle);
 		session.save(load);
 		tx.commit();
@@ -76,6 +79,6 @@ public class Loads {
 		tx.commit();
 		session.close();
 		session = null;
-		
+		System.out.println("SAVE LOAD ORDERS");
 	}
 }

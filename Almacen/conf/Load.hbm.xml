@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 14-feb-2015 19:02:58 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="classes.Load" table="load">
+    <class name="classes.Load" table="almacenDavid.load">
         <id name="mId" type="int" access="field">
             <column name="id" />
             <generator class="increment" />
@@ -21,7 +21,7 @@
             <key>
                 <column name="load_id" />
             </key>
-            <list-index></list-index>
+            <list-index><column name="idx"></column></list-index>
             <one-to-many class="classes.Order" />
         </list>
         <property name="mTime" type="java.lang.String" access="field">

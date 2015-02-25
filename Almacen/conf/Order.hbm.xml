@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 14-feb-2015 19:02:58 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="classes.Order" table="ORDER">
+    <class name="classes.Order" table="almacenDavid.order">
         <id name="mId" type="int" access="field">
             <column name="id" />
             <generator class="increment" />
@@ -21,7 +21,7 @@
             <key>
                 <column name="order_id" />
             </key>
-            <list-index></list-index>
+            <list-index><column name="idx"></column></list-index>
             <one-to-many class="classes.Product" />
         </list>
     </class>

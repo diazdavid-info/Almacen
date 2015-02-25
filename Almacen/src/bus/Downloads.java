@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import classes.Company;
+import classes.LogJobs;
 import classes.Person;
 import classes.Product;
 import classes.Unload;
@@ -54,6 +55,8 @@ public class Downloads {
 		Person driver = (Person) session.load(Person.class, idDriver);
 		Vehicle vehicle = (Vehicle) session.load(Vehicle.class, idVehicle);
 		Person person = (Person) session.load(Person.class, idWorker);
+		LogJobs log = new LogJobs(person, "Descarga");
+		session.save(log);
 		Unload unload = new Unload(company, date, driver, time, vehicle);
 		session.save(unload);
 		tx.commit();

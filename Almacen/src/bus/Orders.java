@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import classes.Order;
 import classes.Person;
 import classes.Product;
+import classes.Shelf;
 
 public class Orders {
 
@@ -49,6 +50,7 @@ public class Orders {
 		createSessionTransation();
 		Person person = (Person) session.load(Person.class, idPerson);
 		Order order = new Order(date, person, price);
+		System.out.println("ID ORDER: "+order.getId());
 		session.save(order);
 		tx.commit();
 		return String.valueOf(order.getId());
@@ -64,20 +66,21 @@ public class Orders {
 	public String saveProductOrder(String asin, int idOrder){
 		Boolean result = false;
 		createSessionTransation();
-		query = session.createQuery("from Person as p where p.mAsin = '"+asin+"'");
-		List<Product> list = query.list();
+		query = session.createQuery("select s from Shelf as s, Product as p where s.mProduct = p.mId and p.mCodeAsin = '"+asin+"'");
+		List<Shelf> list = query.list();
+		System.out.println(list.size());
 		if(list.size() > 0){
-			Product product = list.get(0);
+			Shelf shelf = list.get(0);
+			Product product = shelf.getProduct();
 			Order order = (Order) session.load(Order.class, idOrder);
 			order.addProduct(product);
 			session.saveOrUpdate(order);
-			tx.commit();
 			result = true;
-			Shelves shelves = new Shelves();
-			shelves.deleteProduct(product.getId());
+			session.delete(shelf);
+			tx.commit();
 		}
 		session.close();
 		session = null;
-		return "{result:"+result+",order:"+idOrder+"}";
+		return "{\"result\":\""+result+"\",\"order\":\""+idOrder+"\",\"asin\":\""+asin+"\"}";
 	}
 }
